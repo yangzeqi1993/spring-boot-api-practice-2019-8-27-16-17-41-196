@@ -73,9 +73,9 @@ public class CompanyController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Company> creatCompany(@RequestBody Company company){
+    public ResponseEntity<List<Company>> creatCompany(@RequestBody Company company){
         companies.add(company);
-        return ResponseEntity.ok(company);
+        return ResponseEntity.ok(companies);
     }
 
     @PutMapping("/{companyId}")
