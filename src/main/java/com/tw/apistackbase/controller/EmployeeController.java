@@ -67,15 +67,19 @@ public class EmployeeController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<Employee> creatEmployee(@RequestBody Employee employee){
+    @ResponseStatus(HttpStatus.CREATED)
+    public List<Employee> creatEmployee(@RequestBody Employee employee){
+        // employee = new Employee(7,"yang",17,"男",7000);
         employees.add(employee);
-        return ResponseEntity.ok(employee);
+        return employees;
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Employee> updateCompany(@PathVariable int id,
                                                   @RequestBody Employee newEmployee)
     {
+        newEmployee = new Employee(1,"yang",17,"男",7000);
+        id = 1;
         for(Employee employee : employees){
             if(employee.getId()== id){
                 employee.setId(newEmployee.getId());
